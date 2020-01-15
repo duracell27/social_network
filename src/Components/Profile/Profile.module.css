@@ -1,9 +1,4 @@
-.content {
-    grid-area: c;
-    background-color: #83e4f5;
-  }
-  
-  .content img {
-    width: 100%;
-    height: 200px;
-  }
+.content img {
+  width: 100%;
+  height: 200px;
+}
