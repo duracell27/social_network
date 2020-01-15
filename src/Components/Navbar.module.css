@@ -1,0 +1,25 @@
+.nav {
+    grid-area: n;
+    background-color: #a4f37f;
+}
+
+.item{
+    padding: 5px;
+    padding-left: 20px;
+}
+
+.item.active a{
+    color: #5c3af1;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.item a{
+    color: #000000;
+    text-decoration: none;
+    
+}
+
+.item:last-child{
+    padding-top: 30px;
+}
