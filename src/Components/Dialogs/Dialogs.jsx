@@ -2,34 +2,38 @@ import React from 'react';
 import cls from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom';
 
-const Dialogs = () => {
+const DialogItem = (props) => {
+    return (
+        <div className={`${cls.dialog} ${cls.active}`}>
+            <NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink>
+        </div>
+    );
+}
+
+const Message = (props) => {
     return(
+    <div className={cls.message}>{props.message}</div>
+    );
+}
+
+const Dialogs = () => {
+    return (
         <div className={cls.dialogs}>
             <div className={cls.dialogsItems}>
-                <div className={`${cls.dialog} ${cls.active}`}>
-                    <NavLink to="/dialogs/1">dima </NavLink>
-                </div>
-                <div className={cls.dialog}>
-                    <NavLink to="/dialogs/2">rostik </NavLink>
-                </div>
-                <div className={cls.dialog}>
-                    <NavLink to="/dialogs/3">anton </NavLink>
-                </div>
-                <div className={cls.dialog}>
-                    <NavLink to="/dialogs/4">sasha </NavLink>
-                </div>
-                <div className={cls.dialog}>
-                    <NavLink to="/dialogs/5">roman </NavLink>
-                </div>
+                <DialogItem name="Dima" id="1" />
+                <DialogItem name="Anton" id="2" />
+                <DialogItem name="Rostik" id="3" />
+                <DialogItem name="Sasha" id="4" />
+                <DialogItem name="Roman" id="5" />
             </div>
             <div className={cls.messges}>
-                <div className={cls.message}>Hi</div>
-                <div className={cls.message}>Hello</div>
-                <div className={cls.message}>how are you</div>
-                <div className={cls.message}>fine</div>
+                <Message message="Hi" />
+                <Message message="Hello" />
+                <Message message="how are you" />
+                <Message message="fine" />
             </div>
         </div>
-        
+
     );
 }
 
