@@ -3,7 +3,6 @@ import cls from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
-  debugger;
 
   let postsElements = props.postsData.postsData.map( post => <Post message={post.postText} likes={post.likes} id={post.id} /> );
 

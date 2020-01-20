@@ -22,6 +22,19 @@
 }
 
 .message{
-    padding: 10px;
+    margin: 10px;
+    padding: 7px;
+    border-radius: 7px;
     color: #ec441a;
+    background-color: #ffdbdb;
+}
+
+.message.my{
+    text-align: right;
+}
+
+.dialogWrap img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
