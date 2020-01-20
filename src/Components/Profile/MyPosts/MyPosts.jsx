@@ -3,16 +3,9 @@ import cls from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
+  debugger;
 
-  // let postsData = [
-  //   { id: 1, likes: 4, postText: "Hi world" },
-  //   { id: 2, likes: 41, postText: "My first post" },
-  //   { id: 3, likes: 14, postText: "Lalalalalal" },
-  //   { id: 4, likes: 23, postText: "i love pasta" },
-  //   { id: 5, likes: 13, postText: "pizza" },
-  // ]
-
-  let postsElements = props.postsData.map( post => <Post message={post.postText} likes={post.likes} id={post.id} /> );
+  let postsElements = props.postsData.postsData.map( post => <Post message={post.postText} likes={post.likes} id={post.id} /> );
 
   return (
     <div>
