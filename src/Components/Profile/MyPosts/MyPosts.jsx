@@ -23,9 +23,6 @@ const MyPosts = () => {
       </div>
       <div className={cls.posts}>
         {postsElements}
-        {/* <Post message="Hi world" likes={15} />
-        <Post message="My first post" likes={12} />
-        <Post message="Lalalalalal" likes={8} /> */}
       </div>
     </div>
   );
