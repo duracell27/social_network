@@ -38,3 +38,26 @@
     height: 40px;
     border-radius: 50%;
 }
+
+textarea{
+    width: 100%;
+    outline: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.addMessage{
+    margin: 10px;
+}
+
+button{
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #43ec7b;
+    color: #ffffff;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+}
