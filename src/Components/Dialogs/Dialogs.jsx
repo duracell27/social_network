@@ -12,6 +12,7 @@ const Dialogs = (props) => {
     let addNewMessage = React.createRef();
 
     let addMessage = () => {
+        
         props.addMessage();
       }
     

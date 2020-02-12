@@ -10,8 +10,7 @@ import News from './Components/News/News';
 import Settings from './Components/Settings/Settings';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 
-const App = (props) => {
-  debugger;
+const App = (props) => {  
   return (
     <BrowserRouter>
       <div className="app-wrapper">
