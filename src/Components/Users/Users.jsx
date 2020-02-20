@@ -13,17 +13,18 @@ const Users = (props) => {
 
 
     return (
-        <div>
+        <div className={cls.usersWrap}>
             {
                 props.users.map((user) => <div className={cls.userItem} key={user.id}>
                     <div className={cls.ava}>
                         <img src={user.img} alt="ava" />
                         {user.followed ? <button onClick={() => { props.unfollow(user.id) }}> Unfollow </button> : <button onClick={() => { props.follow(user.id) }}> Follow </button>}
                     </div>
-                    <div>
-                        <p>{user.name.firstName}</p>
-                        <p>{user.location.city}</p>
-                        <p>{user.age}</p>
+                    <div className={cls.userDescr}>
+                        <p><span>Name: </span>{`${user.name.firstName} ${user.name.secondName}`}</p>
+                        <p><span>Status: </span>{`${user.status}`}</p>
+                        <p><span>Age: </span>{user.age}</p>
+                        <p><span>Location: </span>{`${user.location.city}, ${user.location.country}`}</p>
                     </div>
                 </div>
                 )
