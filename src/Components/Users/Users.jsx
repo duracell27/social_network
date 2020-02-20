@@ -4,6 +4,11 @@ import cls from './Users.module.css';
 const Users = (props) => {
 
     if (props.users.length === 0) {
+
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(data => {
+            
+        });
+
         props.setUsers([
             { id: 1, followed: false, name: { firstName: 'Ivan', secondName: 'Gavruliyk' }, location: { city: 'Ivano-Frankivsk', country: 'Ukraine' }, age: 15, status: 'i am svarschik', img: 'https://s.yimg.com/uu/api/res/1.2/DdytqdFTgtQuxVrHLDdmjQ--~B/aD03MTY7dz0xMDgwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2019-11/7b5b5330-112b-11ea-a77f-7c019be7ecae' },
             { id: 2, followed: true, name: { firstName: 'Sasha', secondName: 'Faraon' }, location: { city: 'Lviv', country: 'Ukraine' }, age: 45, status: 'i am povar', img: 'https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg?q=85&w=1340' },
