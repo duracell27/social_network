@@ -59,3 +59,23 @@
 .userDescr p span{
     color: rgb(139, 139, 139);
 }
+
+.pagination{
+    text-align: center;
+    margin: 20px 0px;
+}
+.pagination span{
+    padding: 7px 12px;
+}
+
+.pagination span:hover{
+    background-color: rgb(100, 177, 240);
+    border-radius: 5px;
+}
+
+.selectedPage{
+    font-weight: bold;
+    background-color: rgb(100, 177, 240);
+    border-radius: 5px;
+    border: 2px solid #014564;
+}
