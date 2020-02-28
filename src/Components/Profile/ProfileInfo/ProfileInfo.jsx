@@ -3,6 +3,7 @@ import cls from './ProfileInfo.module.css';
 import Preloader from '../../Common/Preloader/Preloader';
 import jobTrue from '../../../assets/img/jobtrue.png';
 import jobFalse from '../../../assets/img/jobfalse.png';
+import noAva from '../../../assets/img/people.png';
 
 const ProfileInfo = (props) => {
 
@@ -18,7 +19,7 @@ const ProfileInfo = (props) => {
       </div>
       <div className={cls.descr}>
         <div className={cls.img}>
-          <img src={props.profile.photos.small} alt="ava" />
+          <img src={props.profile.photos.small || noAva} alt="ava" />
         </div>
         <div className={cls.userInfo}>
           <div className={cls.name}>
