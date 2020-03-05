@@ -8,12 +8,13 @@ let initialState = {
 };
 
 const authReducer = (state = initialState, action) => {
-  debugger;
   switch (action.type) {
     case SET_USER_DATA:
       return {
         ...state,
-        ...action.data,
+        id: action.data.id,
+        email: action.data.email,
+        login: action.data.login,
         isAuth: true
       }
     default:
@@ -21,7 +22,7 @@ const authReducer = (state = initialState, action) => {
   }
 }
 
-export const setAuthUserData = (id, email, login) => ({type: SET_USER_DATA, data: {id, email, login}});
+export const setAuthUserData = (data) => ({type: SET_USER_DATA, data});
 
 
 
