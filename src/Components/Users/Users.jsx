@@ -28,7 +28,29 @@ const Users = (props) => {
                     <NavLink to={`/profile/${user.id}`}>
                         <img src={user.photos.small != null ? user.photos.small : userPhoto} alt="ava" />
                     </NavLink>
-                    {user.followed ? <button onClick={() => { props.unfollow(user.id) }}> Unfollow </button> : <button onClick={() => { props.follow(user.id) }}> Follow </button>}
+                    {user.followed ? <button onClick={() => {
+
+                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+                            withCredentials: true
+                        }).then(response => {
+                            if (response.data.resultCode === 0) {
+
+                                props.unfollow(user.id);
+                            }
+                        });
+
+                    }}> Unfollow </button> : <button onClick={() => {
+
+                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
+                            withCredentials: true
+                        }).then(response => {
+                            if (response.data.resultCode === 0) {
+
+                                props.follow(user.id);
+                            }
+                        });
+
+                    }}> Follow </button>}
                 </div>
                 <div className={cls.userDescr}>
                     <p><span>Name: </span>{`${user.name}`}</p>
