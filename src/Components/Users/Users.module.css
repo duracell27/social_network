@@ -24,7 +24,7 @@
     display: block;
     line-height: 30px;
     text-align: center;
-    background-color: #43ec7b;
+    background-color: #8ee4aa;
     color: #0086c4;
     text-transform: uppercase;
     font-weight: bold;
@@ -33,6 +33,10 @@
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+.ava button:disabled{
+    background-color: #45c945;
 }
 
 .userDescr{

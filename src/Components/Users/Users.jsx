@@ -30,22 +30,24 @@ const Users = (props) => {
                     <NavLink to={`/profile/${user.id}`}>
                         <img src={user.photos.small != null ? user.photos.small : userPhoto} alt="ava" />
                     </NavLink>
-                    {user.followed ? <button onClick={() => {
-
+                    {user.followed ? <button disabled={props.followingInProgres.some(id=>id===user.id)} onClick={() => {
+                        props.toggleIsFollowing(true, user.id);
                         userAPI.unfollow(user.id).then(response => {
                             if (response.resultCode === 0) {
 
                                 props.unfollow(user.id);
                             }
+                            props.toggleIsFollowing(false, user.id);
                         });
 
-                    }}> Unfollow </button> : <button onClick={() => {
-
+                    }}> Unfollow </button> : <button disabled={props.followingInProgres.some(id=>id===user.id)} onClick={() => {
+                        props.toggleIsFollowing(true, user.id);
                         userAPI.follow(user.id).then(response => {
                             if (response.resultCode === 0) {
 
                                 props.follow(user.id);
                             }
+                            props.toggleIsFollowing(false, user.id);
                         });
 
                     }}> Follow </button>}
