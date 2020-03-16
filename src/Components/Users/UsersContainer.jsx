@@ -2,9 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleIsFollowing, getUsersThunkCreator} from '../../redux/usersReducer';
 import Users from './Users';
-import * as axios from 'axios';
 import Preloader from '../Common/Preloader/Preloader';
-import { userAPI} from '../../Api/api';
 
 class UsersAPIComponent extends React.Component {
     
