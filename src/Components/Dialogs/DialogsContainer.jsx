@@ -1,4 +1,3 @@
-import React from 'react';
 import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../redux/messagesReducer';
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
@@ -10,7 +9,6 @@ let mapStateToProps = (state) => {
         dialogsData: state.messages.dialogsData,
         messagesData: state.messages.messagesData,
         newMessageText: state.messages.newMessageText,
-        isAuth: state.auth.isAuth
     }
 }
 
