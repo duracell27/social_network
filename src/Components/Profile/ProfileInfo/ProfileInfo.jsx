@@ -4,6 +4,7 @@ import Preloader from '../../Common/Preloader/Preloader';
 import jobTrue from '../../../assets/img/jobtrue.png';
 import jobFalse from '../../../assets/img/jobfalse.png';
 import noAva from '../../../assets/img/people.png';
+import ProfileStatus from '../../ProfileStatus/ProfileStatus';
 
 const ProfileInfo = (props) => {
 
@@ -24,7 +25,8 @@ const ProfileInfo = (props) => {
         <div className={cls.userInfo}>
           <div className={cls.name}>
             <h1>{props.profile.fullName}</h1>
-            <h3>{props.profile.aboutMe}</h3>
+            {/* <h3>{props.profile.aboutMe}</h3> */}
+            <ProfileStatus status={'hello my friend'}/>
           </div>
           <div className={cls.job}>
             <div className={cls.mark}>
