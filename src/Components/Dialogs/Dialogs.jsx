@@ -2,6 +2,7 @@ import React from 'react';
 import cls from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
+import {Field, reduxForm} from "redux-form";
 
 const Dialogs = (props) => {
     
@@ -9,15 +10,17 @@ const Dialogs = (props) => {
 
     let messagesElements = props.messagesData.map( message => <Message message={message.message} id={message.id} my={message.my}/> );
 
-    let addNewMessage = React.createRef();
-
     let addMessage = () => {
         props.addMessage();
     }
     
-    let onMessageChange = () => {
-        let text = addNewMessage.current.value;
-        props.updateNewMessageBody(text);
+    // let onMessageChange = () => {
+    //     let text = addNewMessage.current.value;
+    //     props.updateNewMessageBody(text);
+    // }
+
+    let addNewMessage = (formData) => {
+        props.addMessage(formData.newMessage);
     }
 
     return (
@@ -25,16 +28,27 @@ const Dialogs = (props) => {
             <div className={cls.dialogsItems}>
                 {dialogsElements}
             </div>
-            <div className={cls.messges}>
+            <div className={cls.messages}>
                 {messagesElements}
-                <div className={cls.addMessage}>
-                    <textarea ref={addNewMessage} value={props.newMessageText} onChange={onMessageChange} name="newMessage"></textarea><br></br>
-                    <button onClick={addMessage}>Add Message</button>
-                </div>
+                <AddMessageFormRedux onSubmit={addNewMessage}/>
             </div>
         </div>
 
     );
 }
+
+const AddMessageForm = (props) => {
+    return (
+        <form className={cls.addMessage} onSubmit={props.handleSubmit}>
+            <Field component={'textarea'} name={'newMessage'} placeholder={'Enter your message'}/>
+            <br></br>
+            <button>Add Message</button>
+        </form>
+    )
+}
+
+const AddMessageFormRedux = reduxForm({
+    form: 'addMessage'
+})(AddMessageForm);
 
 export default Dialogs;

@@ -4,7 +4,6 @@ import {Field, reduxForm} from "redux-form";
 
 const Login = () => {
     const onSubmit = (formData) => {
-            debugger
     }
     return (
         <div className={cls.login}>
@@ -16,7 +15,7 @@ const Login = () => {
 }
 
 const LoginForm = (props) => {
-    debugger
+
     return (
             <form onSubmit={props.handleSubmit}>
                 <div>

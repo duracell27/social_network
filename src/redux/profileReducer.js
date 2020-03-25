@@ -13,7 +13,6 @@ let initialState = {
     { id: 4, likes: 23, postText: "i love pasta" },
     { id: 5, likes: 13, postText: "pizza" },
   ],
-  newPostText: '',
   profile: null,
   status: '',
 };
@@ -24,14 +23,13 @@ const profileReducer = (state = initialState, action) => {
       let newPost = {
         id: 5,
         likes: 0,
-        postText: state.newPostText,
+        postText: action.newPost,
       };
 
-      if (state.newPostText) {
+      if (action.newPost) {
         return {
           ...state,
-          postsData: [...state.postsData, newPost],
-          newPostText: ''
+          postsData: [...state.postsData, newPost]
         }
       }
     case UPDATE_NEW_POST_TEXT:
@@ -54,9 +52,9 @@ const profileReducer = (state = initialState, action) => {
   }
 }
 
-export const addPostActionCreator = () => {
+export const addPostActionCreator = (newPost) => {
   return {
-    type: ADD_POST
+    type: ADD_POST, newPost
   }
 }
 
