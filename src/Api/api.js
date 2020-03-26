@@ -21,6 +21,12 @@ export const userAPI = {
     authMe(){
         return instance.get(`auth/me`).then(response => response.data)
     },
+    login(email, password, rememberMe = false){
+        return instance.post(`auth/login`, {email, password, rememberMe}).then(response => response.data)
+    },
+    logOut(){
+        return instance.delete(`auth/login`).then(response => response.data)
+    },
     getProfile(userId) {
         console.warn("use profileApi");
         return profileAPI.getProfile(userId);
