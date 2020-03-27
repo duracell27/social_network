@@ -38,7 +38,7 @@ const setAuthUserData = (data) => ({type: SET_USER_DATA, data});
 const delAuthUserData = () => ({type: DEL_USER_DATA});
 
 export const getAuthUserData = () => (dispatch) => {
-  userAPI.authMe().then(response => {
+  return userAPI.authMe().then(response => {
     if (response.resultCode === 0) {
       dispatch(setAuthUserData(response.data));
     }
