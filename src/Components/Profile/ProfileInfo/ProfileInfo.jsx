@@ -5,6 +5,7 @@ import jobTrue from '../../../assets/img/jobtrue.png';
 import jobFalse from '../../../assets/img/jobfalse.png';
 import noAva from '../../../assets/img/people.png';
 import ProfileStatus from '../../ProfileStatus/ProfileStatus';
+import ProfileStatusWithHooks from "../../ProfileStatus/ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
 
@@ -26,7 +27,7 @@ const ProfileInfo = (props) => {
           <div className={cls.name}>
             <h1>{props.profile.fullName}</h1>
             {/* <h3>{props.profile.aboutMe}</h3> */}
-            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
           </div>
           <div className={cls.job}>
             <div className={cls.mark}>
