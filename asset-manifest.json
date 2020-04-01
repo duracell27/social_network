@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/duracell27/social_network/static/css/main.121bdcf2.chunk.css",
+    "main.js": "/duracell27/social_network/static/js/main.d7ef91be.chunk.js",
+    "main.js.map": "/duracell27/social_network/static/js/main.d7ef91be.chunk.js.map",
+    "runtime-main.js": "/duracell27/social_network/static/js/runtime-main.9f3b4873.js",
+    "runtime-main.js.map": "/duracell27/social_network/static/js/runtime-main.9f3b4873.js.map",
+    "static/js/2.00e62797.chunk.js": "/duracell27/social_network/static/js/2.00e62797.chunk.js",
+    "static/js/2.00e62797.chunk.js.map": "/duracell27/social_network/static/js/2.00e62797.chunk.js.map",
+    "static/css/3.9d78c2d9.chunk.css": "/duracell27/social_network/static/css/3.9d78c2d9.chunk.css",
+    "static/js/3.7289e063.chunk.js": "/duracell27/social_network/static/js/3.7289e063.chunk.js",
+    "static/js/3.7289e063.chunk.js.map": "/duracell27/social_network/static/js/3.7289e063.chunk.js.map",
+    "static/css/4.c8a0d24e.chunk.css": "/duracell27/social_network/static/css/4.c8a0d24e.chunk.css",
+    "static/js/4.c1f99600.chunk.js": "/duracell27/social_network/static/js/4.c1f99600.chunk.js",
+    "static/js/4.c1f99600.chunk.js.map": "/duracell27/social_network/static/js/4.c1f99600.chunk.js.map",
+    "static/css/5.47b57205.chunk.css": "/duracell27/social_network/static/css/5.47b57205.chunk.css",
+    "static/js/5.864addff.chunk.js": "/duracell27/social_network/static/js/5.864addff.chunk.js",
+    "static/js/5.864addff.chunk.js.map": "/duracell27/social_network/static/js/5.864addff.chunk.js.map",
+    "index.html": "/duracell27/social_network/index.html",
+    "precache-manifest.f206e74b4c4c58fb0195fcb5460bf904.js": "/duracell27/social_network/precache-manifest.f206e74b4c4c58fb0195fcb5460bf904.js",
+    "service-worker.js": "/duracell27/social_network/service-worker.js",
+    "static/css/3.9d78c2d9.chunk.css.map": "/duracell27/social_network/static/css/3.9d78c2d9.chunk.css.map",
+    "static/css/4.c8a0d24e.chunk.css.map": "/duracell27/social_network/static/css/4.c8a0d24e.chunk.css.map",
+    "static/css/5.47b57205.chunk.css.map": "/duracell27/social_network/static/css/5.47b57205.chunk.css.map",
+    "static/css/main.121bdcf2.chunk.css.map": "/duracell27/social_network/static/css/main.121bdcf2.chunk.css.map",
+    "static/js/2.00e62797.chunk.js.LICENSE.txt": "/duracell27/social_network/static/js/2.00e62797.chunk.js.LICENSE.txt",
+    "static/media/jobfalse.png": "/duracell27/social_network/static/media/jobfalse.e88bb40e.png",
+    "static/media/jobtrue.png": "/duracell27/social_network/static/media/jobtrue.f59f953f.png",
+    "static/media/people.png": "/duracell27/social_network/static/media/people.ce8e7ab8.png",
+    "static/media/spinner.svg": "/duracell27/social_network/static/media/spinner.784daf40.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9f3b4873.js",
+    "static/js/2.00e62797.chunk.js",
+    "static/css/main.121bdcf2.chunk.css",
+    "static/js/main.d7ef91be.chunk.js"
+  ]
+}
