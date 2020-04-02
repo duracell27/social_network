@@ -30,6 +30,15 @@ export const userAPI = {
     getProfile(userId) {
         console.warn("use profileApi");
         return profileAPI.getProfile(userId);
+    },
+    savePhoto(file){
+        let formData = new FormData();
+        formData.append('image', file)
+        return instance.put('profile/photo', formData, {
+            headers: {
+                'Content-Type' : 'multipart/form-data'
+            }
+        });
     }
 
 }

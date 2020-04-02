@@ -9,9 +9,14 @@ import ProfileStatusWithHooks from "../../ProfileStatus/ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
 
-
   if (!props.profile) {
     return <Preloader />
+  }
+
+  const photoChange = (e) => {
+    if(e.target.files.length){
+        props.savePhoto(e.target.files[0]);
+    }
   }
 
   return (
@@ -22,6 +27,7 @@ const ProfileInfo = (props) => {
       <div className={cls.descr}>
         <div className={cls.img}>
           <img src={props.profile.photos.small || noAva} alt="ava" />
+          {props.isOwner ? <input type={'file'} onChange={photoChange}/> : null}
         </div>
         <div className={cls.userInfo}>
           <div className={cls.name}>
