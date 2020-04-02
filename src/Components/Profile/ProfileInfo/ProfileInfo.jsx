@@ -26,8 +26,9 @@ const ProfileInfo = (props) => {
       </div>
       <div className={cls.descr}>
         <div className={cls.img}>
-          <img src={props.profile.photos.small || noAva} alt="ava" />
-          {props.isOwner ? <input type={'file'} onChange={photoChange}/> : null}
+          <img src={props.profile.photos.large || noAva} alt="ava" />
+          {props.isOwner ? <div><input className={cls.inputfile} name={'file'} id={'file'} type={'file'} onChange={photoChange}/><label for="file">Update
+            Photo</label></div>: null}
         </div>
         <div className={cls.userInfo}>
           <div className={cls.name}>

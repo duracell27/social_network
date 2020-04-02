@@ -1,7 +1,10 @@
 .item{
-  color: #e414e4;
+  color: #000000;
   margin-bottom: 20px;
-  
+  background-color: #fff548;
+  border-radius: 25px;
+  padding: 10px;
+  font-weight: bold;
 }
 
 .item img{
@@ -9,4 +12,16 @@
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+.wrap{
+  display: flex;
+  align-items: center;
+}
+
+.likes{
+  padding-left: 10px;
+  border-top: 1px solid #000000;
 }

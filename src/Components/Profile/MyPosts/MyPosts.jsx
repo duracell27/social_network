@@ -9,10 +9,17 @@ let maxLength = maxLengthCreator(30);
 
 const MyPosts = React.memo( props => {
 
-    let postsElements = props.postsData.map(post => <Post message={post.postText} likes={post.likes}
-                                                          id={post.id}/>);
+    let postsElements;
+    if(props.profile){
+        postsElements = props.postsData.map(post => <Post profile={props.profile} message={post.postText} likes={post.likes} id={post.id}/>).reverse();
+    }
+    else {
+        return null
+    }
+
 
     let addNewPost = (formData) => {
+        debugger
         props.addPost(formData.newPost);
     }
 
