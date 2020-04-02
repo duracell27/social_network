@@ -7,3 +7,10 @@
     color: red;
 }
 
+.textarea{
+    width: 300px;
+    height: 30px;
+    border-radius: 15px;
+    border: 2px solid #00ffd6;
+    outline: none;
+}

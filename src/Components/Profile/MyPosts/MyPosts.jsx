@@ -19,7 +19,6 @@ const MyPosts = React.memo( props => {
 
 
     let addNewPost = (formData) => {
-        debugger
         props.addPost(formData.newPost);
     }
 
@@ -42,7 +41,7 @@ const AddPostForm = (props) => {
                 <Field component={TextArea} placeholder={'Add new post'} name={'newPost'} validate={[requiredField, maxLength]}/>
 
             </div>
-            <div><button>Add Post</button></div>
+            <div className={cls.addPostButton}><button>Add Post</button></div>
         </form>
     )
 }
