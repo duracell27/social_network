@@ -39,6 +39,9 @@ export const userAPI = {
                 'Content-Type' : 'multipart/form-data'
             }
         });
+    },
+    saveProfile(data){
+        return instance.put(`profile`, data);
     }
 
 }

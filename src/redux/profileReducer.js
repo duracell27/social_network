@@ -1,4 +1,5 @@
 import {profileAPI, userAPI} from "../Api/api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
@@ -115,6 +116,25 @@ export const savePhoto = (file) => async (dispatch) => {
 
     if(response.data.resultCode === 0){
         dispatch(savePhotoSuccess(response.data.data.photos));
+    }
+}
+
+export const saveProfile = (formData) => async (dispatch, getState) => {
+    let response = await userAPI.saveProfile(formData);
+    const userId = getState().auth.id;
+    if(response.data.resultCode === 0){
+        debugger
+        dispatch(getUserProfile(userId));
+    }else {
+        let position = response.data.messages.length > 0 ? response.data.messages[0].indexOf('Contacts->') : -1;
+        if (position != -1) {
+            let message1 = 'Not valid url in ' + response.data.messages[0].slice(position + 10, -1) + ' input.';
+            dispatch(stopSubmit('editProfile', {_error: message1}));
+            return Promise.reject();
+        }
+
+        // let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Something is wrong';
+        // dispatch(stopSubmit('editProfile', {_error: message1}));
     }
 }
 

@@ -4,9 +4,9 @@ import Preloader from '../../Common/Preloader/Preloader';
 import jobTrue from '../../../assets/img/jobtrue.png';
 import jobFalse from '../../../assets/img/jobfalse.png';
 import noAva from '../../../assets/img/people.png';
-import ProfileStatus from '../../ProfileStatus/ProfileStatus';
 import ProfileStatusWithHooks from "../../ProfileStatus/ProfileStatusWithHooks";
-import ProfileDataForm from "./ProfileDataForm";
+import ProfileDataFormReduxForm from "./ProfileDataForm";
+
 
 const ProfileInfo = (props) => {
 
@@ -26,6 +26,13 @@ const ProfileInfo = (props) => {
         }
     }
 
+    const onSubmit = (formData) => {
+        props.saveProfile(formData).then(()=> {
+            setEditMode(false);
+        });
+
+    }
+
     return (
         <div className={cls.content}>
             <div>
@@ -39,7 +46,7 @@ const ProfileInfo = (props) => {
                                                  onChange={photoChange}/><label for="file">Update
                         Photo</label></div> : null}
                 </div>
-                {editMode ? <ProfileDataForm profile={props.profile}/> :
+                {editMode ? <ProfileDataFormReduxForm initialValues={props.profile} profile={props.profile} onSubmit={onSubmit}/> :
                     <ProfileData profile={props.profile} isOwner={props.isOwner} goToEditMode={goToEditMode}/>}
 
             </div>
@@ -62,7 +69,11 @@ const ProfileData = (props) => {
             <div className={cls.mark}>
                 <p>Looking for a job:</p> {props.profile.lookingForAJob ? <img src={jobTrue}/> : <img src={jobFalse}/>}
             </div>
-            <span>{props.profile.lookingForAJobDescription}</span>
+            <span>My skills: {props.profile.lookingForAJobDescription}</span>
+            <div>
+                <p>About me: {props.profile.aboutMe}</p>
+
+            </div>
         </div>
         <div className={cls.contacts}>
             <p><b>Facebook:</b> {props.profile.contacts.facebook || 'Not Set'}</p>

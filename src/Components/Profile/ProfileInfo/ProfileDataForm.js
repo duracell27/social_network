@@ -1,22 +1,20 @@
-import React from'react';
+import React from 'react';
 import cls from "./ProfileInfo.module.css";
 import ProfileStatusWithHooks from "../../ProfileStatus/ProfileStatusWithHooks";
-import jobTrue from "../../../assets/img/jobtrue.png";
-import jobFalse from "../../../assets/img/jobfalse.png";
 import {createField, Input, TextArea} from "../../Common/FormsControls/FormsControls";
 import {reduxForm} from "redux-form";
 
 const ProfileDataForm = (props) => {
-    return <form className={cls.userInfo}>
+    return <form onSubmit={props.handleSubmit} className={cls.userInfo}>
         <div>
-            <button onClick={()=>{}}>save</button>
+            <button>save</button>
         </div>
-
+        {props.error ? <div className={cls.formSummaryError}>{props.error}</div> : null}
         <div className={cls.name}>
-            <h1>
+            <div>
                 <p>Full Name</p>
                 {createField('Full name', 'fullName', [], Input)}
-               </h1>
+            </div>
             {/* <h3>{props.profile.aboutMe}</h3> */}
             <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
         </div>
@@ -27,20 +25,41 @@ const ProfileDataForm = (props) => {
 
             </div>
             <span>
-                <p>Set description</p>
-                {createField('Type description for a job', 'lookingForAJobDescription', [], TextArea)}
-                {props.profile.lookingForAJobDescription}
+                <p>My professional skills</p>
+                {createField('Your Skills', 'lookingForAJobDescription', [], TextArea)}
+
             </span>
+            <div>
+                <p>About ME</p>
+                {createField('About ME', 'aboutMe', [], Input)}
+
+            </div>
         </div>
         <div className={cls.contacts}>
-            <p><b>Facebook:</b> {props.profile.contacts.facebook || 'Not Set'}</p>
-            <p><b>Website:</b> {props.profile.contacts.website || 'Not Set'}</p>
-            <p><b>Vk:</b> {props.profile.contacts.vk || 'Not Set'}</p>
-            <p><b>Twitter:</b> {props.profile.contacts.twitter || 'Not Set'}</p>
-            <p><b>Instagram:</b> {props.profile.contacts.instagram || 'Not Set'}</p>
-            <p><b>Youtube:</b> {props.profile.contacts.youtube || 'Not Set'}</p>
-            <p><b>Github:</b> {props.profile.contacts.github || 'Not Set'}</p>
-            <p><b>MainLink:</b> {props.profile.contacts.mainLink || 'Not Set'}</p>
+            <p><b>Facebook:</b>
+                {createField('Facebook', 'contacts.facebook', [], Input)}
+            </p>
+            <p><b>Website:</b>
+                {createField('Website', 'contacts.website', [], Input)}
+            </p>
+            <p><b>Vk:</b>
+                {createField('Vk', 'contacts.vk', [], Input)}
+            </p>
+            <p><b>Twitter:</b>
+                {createField('Twitter', 'contacts.twitter', [], Input)}
+            </p>
+            <p><b>Instagram:</b>
+                {createField('Instagram', 'contacts.instagram', [], Input)}
+            </p>
+            <p><b>Youtube:</b>
+                {createField('Youtube', 'contacts.youtube', [], Input)}
+            </p>
+            <p><b>Github:</b>
+                {createField('Github', 'contacts.github', [], Input)}
+            </p>
+            <p><b>MainLink:</b>
+                {createField('MainLink', 'contacts.mainLink', [], Input)}
+            </p>
         </div>
     </form>;
 }
