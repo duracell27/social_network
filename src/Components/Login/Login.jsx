@@ -12,7 +12,7 @@ let maxLength = maxLengthCreator(30);
 
 const Login = (props) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe);
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha);
     }
 
     if (props.isAuth) return <Redirect to={'/profile'}/>
@@ -20,7 +20,7 @@ const Login = (props) => {
     return (
         <div className={cls.login}>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm captchaUrl={props.captchaUrl} onSubmit={onSubmit}/>
         </div>
     )
 }
@@ -33,7 +33,8 @@ const LoginForm = (props) => {
             {createField('Email', 'email', [requiredField, maxLength], Input)}
             {createField('Password', 'password', [requiredField, maxLength], Input, {type: 'password'})}
             {createField('', 'rememberMe', null, Input, {type: 'checkbox'})}
-
+            {props.captchaUrl ? <img src={props.captchaUrl}/> : null}
+            {props.captchaUrl ? createField('Captcha symbols', 'captcha', [requiredField], Input) : null}
             {props.error ? <div className={cls.formSummaryError}>{props.error}</div> : null}
             <div>
                 <button>Log In</button>
@@ -47,7 +48,8 @@ let LoginReduxForm = reduxForm({
 })(LoginForm);
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl
 })
 
 export default connect(mapStateToProps, {login})(Login);
