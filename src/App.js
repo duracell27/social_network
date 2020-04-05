@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
-import {Route, BrowserRouter} from 'react-router-dom';
+import {Route, BrowserRouter, Switch, Redirect} from 'react-router-dom';
 import Music from './Components/Music/Music';
 import News from './Components/News/News';
 import Settings from './Components/Settings/Settings';
@@ -36,13 +36,17 @@ class App extends React.Component {
                     <Navbar/>
 
                     <div className='app-wrapper-content'>
-                        <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
-                        <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
-                        <Route path='/music' component={Music}/>
-                        <Route path='/news' component={News}/>
-                        <Route path='/users' render={withSuspense(UsersContainer)}/>
-                        <Route path='/settings' component={Settings}/>
-                        <Route path='/login' component={Login}/>
+                        <Switch>
+                            <Route exact path='/' render={()=> <Redirect to={'/profile'}/>}/>
+                            <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
+                            <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
+                            <Route path='/music' component={Music}/>
+                            <Route path='/news' component={News}/>
+                            <Route path='/users' render={withSuspense(UsersContainer)}/>
+                            <Route path='/settings' component={Settings}/>
+                            <Route path='/login' component={Login}/>
+                            <Route path='*' render={()=> <div> 404 NOT FOUND</div>}/>
+                        </Switch>
                     </div>
 
                 </div>
