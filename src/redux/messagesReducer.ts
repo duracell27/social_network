@@ -1,6 +1,18 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
+export type dialogsDataType = {
+    id: number
+    name: string
+    picUrl: string
+}
+
+export type messagesDataType = {
+    id: number
+    message: string
+    my: number
+}
+
 let initialState = {
     dialogsData: [
         { id: 1, name: "Dima", picUrl: 'https://images.unsplash.com/photo-1487035242901-d419a42d17af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80' },
@@ -9,17 +21,19 @@ let initialState = {
         { id: 4, name: "Sasha", picUrl: 'https://images.photolamus.com/UPL74SwM/463x463/c/m/572b1bd45f0c25f2a9800fb5c7838ac0/watercolor-bird-portrait-photos-example.jpg' },
         { id: 5, name: "Roman", picUrl: 'https://drop.ndtv.com/albums/AUTO/pininfarina-battista/640_640x480.jpg' },
         { id: 6, name: "Valik", picUrl: 'https://picjumbo.com/wp-content/uploads/free-stock-photos-san-francisco-1080x720.jpg' },
-    ],
+    ] as Array<dialogsDataType>,
     messagesData: [
         { id: 1, message: "Hi", my: 1 },
         { id: 2, message: "Hello", my: 0 },
         { id: 3, message: "how are you", my: 1 },
         { id: 4, message: "fine", my: 0 },
         { id: 5, message: "good", my: 1 },
-    ],
+    ] as Array<messagesDataType>,
 };
 
-const messagesReducer = (state = initialState, action) => {
+export type initialStateType = typeof initialState;
+
+const messagesReducer = (state = initialState, action: any) : initialStateType => {
 
     switch (action.type) {
         case ADD_MESSAGE:
@@ -39,7 +53,12 @@ const messagesReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessageActionCreator = (newMessage) => {
+export type addMessageActionCreatorActionType = {
+    type: typeof ADD_MESSAGE
+    newMessage: string
+}
+
+export const addMessageActionCreator = (newMessage: string) : addMessageActionCreatorActionType => {
     return {
       type: ADD_MESSAGE, newMessage
     }
