@@ -1,11 +1,20 @@
-import React from 'react';
+import React, {FC} from 'react';
 import userPhoto from '../../assets/img/people.png';
 import cls from './Users.module.css';
 import { NavLink } from 'react-router-dom';
-import * as axios from 'axios';
-import { userAPI } from '../../Api/api';
+import {userType} from "../../types/Types";
 
-const Users = (props) => {
+type propsTypes = {
+    currentPage: number
+    onPageChanged: (p: number) => void
+    users: Array<userType>
+    followingInProgres: Array<number>
+    unfollow: (id: number) => void
+    follow: (id: number) => void
+
+}
+
+const Users: FC<propsTypes> = (props) => {
 
     let pages = [];
 
@@ -20,7 +29,7 @@ const Users = (props) => {
     return <div className={cls.usersWrap} >
         <div className={cls.pagination}>
             {pages.map(p => {
-                return <span className={props.currentPage === p && cls.selectedPage} onClick={() => { props.onPageChanged(p) }}>{p}</span>
+                return <span className={props.currentPage === p ? cls.selectedPage : ''} onClick={() => { props.onPageChanged(p) }}>{p}</span>
             })}
         </div>
 
@@ -45,7 +54,7 @@ const Users = (props) => {
         }
         <div className={cls.pagination}>
             {pages.map(p => {
-                return <span className={props.currentPage === p && cls.selectedPage} onClick={() => { props.onPageChanged(p) }}>{p}</span>
+                return <span className={props.currentPage === p ? cls.selectedPage : ''} onClick={() => { props.onPageChanged(p) }}>{p}</span>
             })}
         </div>
     </div >

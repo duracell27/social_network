@@ -7,7 +7,7 @@ import thunkMiddleware from 'redux-thunk';
 import {reducer as formReducer} from "redux-form";
 import appReducer from "./appReducer";
 
-let redusers = combineReducers({
+let reducers = combineReducers({
     profile: profileReducer,
     messages: messagesReducer,
     users: usersReducer,
@@ -16,6 +16,9 @@ let redusers = combineReducers({
     app: appReducer
 });
 
-let store = createStore(redusers, applyMiddleware(thunkMiddleware));
+type reducersType = typeof reducers;
+export type appStateType = ReturnType<reducersType>
 
-export default store;
+let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+
+export default store
