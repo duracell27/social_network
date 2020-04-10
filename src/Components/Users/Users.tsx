@@ -8,7 +8,7 @@ type propsTypes = {
     currentPage: number
     onPageChanged: (p: number) => void
     users: Array<userType>
-    followingInProgres: Array<number>
+    followingInProgress: Array<number>
     unfollow: (id: number) => void
     follow: (id: number) => void
 
@@ -39,9 +39,9 @@ const Users: FC<propsTypes> = (props) => {
                     <NavLink to={`/profile/${user.id}`}>
                         <img src={user.photos.small != null ? user.photos.small : userPhoto} alt="ava" />
                     </NavLink>
-                    {user.followed ? <button disabled={props.followingInProgres.some(id=>id===user.id)} onClick={() => {
+                    {user.followed ? <button disabled={props.followingInProgress.some(id=>id===user.id)} onClick={() => {
                         props.unfollow(user.id);
-                    }}> Unfollow </button> : <button disabled={props.followingInProgres.some(id=>id===user.id)} onClick={() => {
+                    }}> Unfollow </button> : <button disabled={props.followingInProgress.some(id=>id===user.id)} onClick={() => {
                         props.follow(user.id);
                     }}> Follow </button>}
                 </div>
