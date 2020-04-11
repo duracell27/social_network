@@ -2,7 +2,6 @@ import {userAPI} from '../Api/api';
 import {updateObjectInArray} from "../utils/object-helpers";
 import {userType} from "../types/Types";
 import {appStateType} from "./reduxStore";
-import {Dispatch} from "redux";
 import {ThunkAction} from "redux-thunk";
 
 const FOLLOW = 'FOLLOW';
