@@ -27,12 +27,15 @@ type ownPropsType = {
 
 type propsType = mapStateToPropsType & mapDispatchToPropsType & ownPropsType;
 
-type loginFormValuesType = {
+export type loginFormValuesType = {
     email: string
     password: string
     rememberMe: boolean
     captcha: string | null
 }
+
+type loginFormValuesTypeKeys = Extract<keyof loginFormValuesType, string>
+
 
 type ownLoginFormType = {
     captchaUrl: string | null
@@ -58,11 +61,11 @@ const LoginForm: React.FC<InjectedFormProps<loginFormValuesType, ownLoginFormTyp
     return (
         <form onSubmit={props.handleSubmit}>
 
-            {createField('Email', 'email', [requiredField, maxLength], Input)}
-            {createField('Password', 'password', [requiredField, maxLength], Input, {type: 'password'})}
-            {createField('', 'rememberMe', [], Input, {type: 'checkbox'})}
+            {createField<loginFormValuesTypeKeys>('Email', 'email', [requiredField, maxLength], Input)}
+            {createField<loginFormValuesTypeKeys>('Password', 'password', [requiredField, maxLength], Input, {type: 'password'})}
+            {createField<loginFormValuesTypeKeys>('', 'rememberMe', [], Input, {type: 'checkbox'})}
             {props.captchaUrl ? <img src={props.captchaUrl}/> : null}
-            {props.captchaUrl ? createField('Captcha symbols', 'captcha', [requiredField], Input) : null}
+            {props.captchaUrl ? createField<loginFormValuesTypeKeys>('Captcha symbols', 'captcha', [requiredField], Input) : null}
             {props.error ? <div className={cls.formSummaryError}>{props.error}</div> : null}
             <div>
                 <button>Log In</button>
