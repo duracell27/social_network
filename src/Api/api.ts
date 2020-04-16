@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {profileType} from "../types/Types";
+import {profileType, userType} from "../types/Types";
 
 const instance = axios.create({
     withCredentials: true,
@@ -21,16 +21,28 @@ type loginResponsetype = {
     messages: Array<string>
 }
 
+type getUsersResponseType = {
+    items: Array<userType>
+    totalCount: number
+    error: string
+}
+
+type standartResponseType = {
+    resultCode: number
+    messages: Array<string>
+    data: object
+}
+
 
 export const userAPI = {
     getUsers(currentPage: number, pageSize: number){
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
+        return instance.get<getUsersResponseType>(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
     },
     follow(userId: number){
-        return instance.post(`follow/${userId}`).then(response => response.data)
+        return instance.post<standartResponseType>(`follow/${userId}`).then(response => response.data)
     },
     unfollow(userId: number){
-        return instance.delete(`follow/${userId}`).then(response => response.data)
+        return instance.delete<standartResponseType>(`follow/${userId}`).then(response => response.data)
     },
     authMe(){
         return instance.get<meResponsetype>(`auth/me`).then(response => response.data)
@@ -55,25 +67,49 @@ export const userAPI = {
         });
     },
     saveProfile(data: profileType){
-        return instance.put(`profile`, data);
+        return instance.put<getProfileResponseName>(`profile`, data);
     }
 
 }
 
+type getProfileResponseName = {
+    "aboutMe": string
+    "contacts": {
+        "skype": string
+        "vk": string
+        "facebook": string
+        "icq": string
+        "email": string
+        "googlePlus": string
+        "twitter": string
+        "instagram": string
+        "whatsApp": string
+    },
+    "lookingForAJob": boolean
+    "lookingForAJobDescription": string
+    "fullName": string
+    "userId": number
+    "photos": { small: string, large: string}
+}
+
 export const profileAPI = {
     getProfile(userId: number){
-        return instance.get(`profile/${userId}`);
+        return instance.get<getProfileResponseName>(`profile/${userId}`);
     },
     getStatus(userId: number){
         return instance.get(`profile/status/${userId}`);
     },
     updateStatus(status: string){
-        return instance.put(`profile/status`, {status:status});
+        return instance.put<standartResponseType>(`profile/status`, {status:status});
     }
+}
+
+type getCaptchaUrlResponseType = {
+    url: string
 }
 
 export const securityAPI = {
     getCaptchaUrl(){
-        return instance.get(`security/get-captcha-url`);
+        return instance.get<getCaptchaUrlResponseType>(`security/get-captcha-url`);
     }
 }

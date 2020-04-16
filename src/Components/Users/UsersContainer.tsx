@@ -36,6 +36,7 @@ type ownPropsType = {};
 type propsType = mapDispatchToPropsType & mapStateToPropsType & ownPropsType;
 
 class UsersAPIComponent extends React.Component<propsType> {
+
     
     componentDidMount() {
         this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);

@@ -7,7 +7,6 @@ import {connect} from "react-redux";
 import {login} from "../../redux/AuthReducer";
 import {Redirect} from "react-router-dom";
 import {createField} from "../Common/FormsControls/FormsControls";
-import {userType} from "../../types/Types";
 import {appStateType} from "../../redux/reduxStore";
 
 let maxLength = maxLengthCreator(30);
