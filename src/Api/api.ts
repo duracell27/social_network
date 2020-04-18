@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {profileType, userType} from "../types/Types";
+import {contactsType, photosTypes, profileType, userType} from "../types/Types";
 
 const instance = axios.create({
     withCredentials: true,
@@ -67,29 +67,19 @@ export const userAPI = {
         });
     },
     saveProfile(data: profileType){
-        return instance.put<getProfileResponseName>(`profile`, data);
+        return instance.put<standartResponseType>(`profile`, data);
     }
 
 }
 
 type getProfileResponseName = {
     "aboutMe": string
-    "contacts": {
-        "skype": string
-        "vk": string
-        "facebook": string
-        "icq": string
-        "email": string
-        "googlePlus": string
-        "twitter": string
-        "instagram": string
-        "whatsApp": string
-    },
     "lookingForAJob": boolean
     "lookingForAJobDescription": string
     "fullName": string
     "userId": number
-    "photos": { small: string, large: string}
+    contacts: contactsType
+    photos: photosTypes
 }
 
 export const profileAPI = {

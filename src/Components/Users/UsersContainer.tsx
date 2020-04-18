@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleIsFollowing, getUsersThunkCreator} from '../../redux/usersReducer';
+import {follow, unfollow, getUsersThunkCreator, actions} from '../../redux/usersReducer';
 import Users from './Users';
 import Preloader from '../Common/Preloader/Preloader';
 import { compose } from 'redux';
@@ -16,6 +16,8 @@ import {
 import {userType} from "../../types/Types";
 import {appStateType} from "../../redux/reduxStore";
 
+let setCurrentPageCallback = (currentPage: number) => actions.setCurrentPage(currentPage);
+
 type mapStateToPropsType = {
     currentPage: number
     pageSize: number
@@ -26,7 +28,7 @@ type mapStateToPropsType = {
 
 type mapDispatchToPropsType = {
     getUsersThunkCreator: (currentPage: number, pageSize: number) => void
-    setCurrentPage: (current: number) => void
+    setCurrentPageCallback: (current: number) => void
     unfollow: (userId: number) => void
     follow: (userId: number) => void
 }
@@ -43,7 +45,7 @@ class UsersAPIComponent extends React.Component<propsType> {
     }
 
     onPageChanged = (current: number) => {
-        this.props.setCurrentPage(current);
+        this.props.setCurrentPageCallback(current);
         this.props.getUsersThunkCreator(current, this.props.pageSize);
     }
 
@@ -80,7 +82,7 @@ export default compose(
         follow,
         unfollow,
         // setUsers,
-        setCurrentPage,
+        setCurrentPageCallback,
         // setTotalUsersCount,
         // toggleIsFetching,
         // toggleIsFollowing,
